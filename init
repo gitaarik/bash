@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ $OSTYPE == "darwin12" ]]; then
+    dir=$(dirname $0)
+    path=$PWD${dir:1}
+else
+    path=$(dirname $(readlink -f $0))
+fi
+
+ln -s "$path"/.bash_aliases ~/.bash_aliases
