@@ -7,4 +7,5 @@ else
     path=$(dirname $(readlink -f $0))
 fi
 
+ln -s "$path"/.bashrc ~/.bashrc
 ln -s "$path"/.bash_aliases ~/.bash_aliases
