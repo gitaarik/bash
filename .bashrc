@@ -27,3 +27,13 @@ alias egrep='egrep --color=auto'
 alias rm='rm -i'
 
 alias l='ls -laF'
+
+if [ -d ~/.bash_plugins ]
+then
+
+    for f in ~/.bash_plugins/*
+    do
+        source $f
+    done
+
+fi
