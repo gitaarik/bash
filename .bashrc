@@ -9,8 +9,6 @@ HISTFILESIZE=2000
 # See bash(1) for more options
 export HISTCONTROL=ignoredups
 
-export CLICOLOR=1
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -18,13 +16,21 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-alias ls='ls --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias rm='rm -i'
+if [ `uname` == 'Linux' ]
+then
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias rm='rm -i'
+fi
+
+if [ `uname` == 'Darwin' ]
+then
+    export CLICOLOR=1
+fi
 
 alias l='ls -laF'
 
