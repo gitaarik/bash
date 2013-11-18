@@ -33,6 +33,7 @@ then
 fi
 
 alias l='ls -laF'
+alias v='vi .'
 
 if [ -d ~/.bash_plugins ]
 then
