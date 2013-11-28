@@ -24,7 +24,6 @@ then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-    alias rm='rm -i'
 fi
 
 if [ `uname` == 'Darwin' ]
@@ -34,6 +33,7 @@ fi
 
 alias l='ls -laF'
 alias v='vi .'
+alias rm='rm -i'
 
 if [ -d ~/.bash_plugins ]
 then
