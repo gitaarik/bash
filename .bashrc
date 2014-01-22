@@ -35,6 +35,11 @@ alias l='ls -laF'
 alias v='vi .'
 alias rm='rm -i'
 
+# set default modifiers for less.
+# -R will display color controll characters
+# -i will enable case insensitive search
+export LESS=-Ri
+
 if [ -d ~/.bash_plugins ]
 then
 
