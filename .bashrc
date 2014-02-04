@@ -1,21 +1,27 @@
+# Set the correct locale
+LANG=en_US.UTF-8
+
+# Add the ~/bin/ dir to $PATH
 PATH=$PATH:$HOME/bin
+
+# Make the prompt blue, bold and display the current path
 PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\w \\$ \[$(tput sgr0)\]"
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# Use a big command history
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+# Don't put duplicate lines or lines starting with space in the history
 export HISTCONTROL=ignoredups
 
-# append to the history file, don't overwrite it
+# Append to the history file, don't overwrite it
 shopt -s histappend
 
-# check the window size after each command and, if necessary,
+# Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Linux specific aliases
 if [ `uname` == 'Linux' ]
 then
     alias ls='ls --color=auto'
@@ -26,20 +32,23 @@ then
     alias egrep='egrep --color=auto'
 fi
 
+# OS X specific aliases
 if [ `uname` == 'Darwin' ]
 then
     export CLICOLOR=1
 fi
 
+# Global aliases
 alias l='ls -laF'
 alias v='vi .'
 alias rm='rm -i'
 
-# set default modifiers for less.
+# Set default modifiers for less.
 # -R will display color controll characters
 # -i will enable case insensitive search
 export LESS=-Ri
 
+# Load possible bash plugins from the ~/.bash_plugins/ dir
 if [ -d ~/.bash_plugins ]
 then
 
