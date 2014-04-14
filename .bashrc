@@ -43,7 +43,7 @@ alias l='ls -laF'
 alias v='vi .'
 alias j='jobs'
 alias rm='rm -i'
-alias gg='git grep -i --'
+alias gg='git grep -i'
 alias actenv='. ../env/bin/activate'
 alias gitprompt='. ~/bin/git-prompt'
 
