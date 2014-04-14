@@ -47,10 +47,13 @@ alias gg='git grep -i'
 alias actenv='. ../env/bin/activate'
 alias gitprompt='. ~/bin/git-prompt'
 
-# Set default modifiers for less.
+# Default modifiers for less.
+#
 # -R will display color controll characters
 # -i will enable case insensitive search
-export LESS=-Ri
+# -F will disable paging if the result fits on the screen
+# -X will keep the less output on the screen after exit
+export LESS=-RiFX
 
 # Load possible bash plugins from the ~/.bash_plugins/ dir
 if [ -d ~/.bash_plugins ]
