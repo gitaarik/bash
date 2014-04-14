@@ -49,11 +49,13 @@ alias gitprompt='. ~/bin/git-prompt'
 
 # Default modifiers for less.
 #
-# -R will display color controll characters
-# -i will enable case insensitive search
-# -F will disable paging if the result fits on the screen
-# -X will keep the less output on the screen after exit
-export LESS=-RiFX
+# -R display color controll characters
+# -i case insensitive search
+# -F disable paging if the result fits on the screen
+# -X disable termcap init/deinit, keeps the less output on the screen
+#    after exit.
+# -S crop lines longer than the screen instead of wrapping them
+export LESS=-RiFXS
 
 # Load possible bash plugins from the ~/.bash_plugins/ dir
 if [ -d ~/.bash_plugins ]
