@@ -39,7 +39,7 @@ then
 fi
 
 # Global aliases
-alias l='ls -laF'
+alias l='ls -laFh'
 alias v='vi .'
 alias j='jobs'
 alias rm='rm -i'
