@@ -39,9 +39,10 @@ then
 fi
 
 # Global aliases
-alias l='ls -laFh'
+alias l='ls -lAFh'
 alias v='vi .'
 alias j='jobs'
+alias s='screen'
 alias rm='rm -i'
 alias gg='git grep -i'
 alias actenv='. ../env/bin/activate'
