@@ -40,6 +40,7 @@ fi
 
 # Global aliases
 alias l='ls -lAFh'
+alias c='cd'
 alias v='vi .'
 alias j='jobs'
 alias s='screen'
