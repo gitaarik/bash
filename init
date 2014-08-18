@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $OSTYPE == "darwin12" ]]; then
+if [[ $OSTYPE == darwin* ]]; then
     dir=$(dirname $0)
     path=$PWD${dir:1}
 else
