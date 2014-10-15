@@ -27,8 +27,7 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # Linux specific aliases
-if [ `uname` == 'Linux' ]
-then
+if [[ $OSTYPE == linux* ]]; then
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
@@ -38,8 +37,7 @@ then
 fi
 
 # OS X specific aliases
-if [ `uname` == 'Darwin' ]
-then
+if [[ $OSTYPE == darwin* ]]; then
     export CLICOLOR=1
 fi
 
@@ -67,9 +65,22 @@ alias ptp='ptipython --vi'
 # -S crop lines longer than the screen instead of wrapping them
 export LESS=-RiFXS
 
+# Init bash completion
+
+if [[ $OSTYPE == darwin* ]]; then
+    if type brew > /dev/null 2>&1; then
+        if [ -f $(brew --prefix)/etc/bash_completion ]; then
+            . $(brew --prefix)/etc/bash_completion
+        fi
+    fi
+else
+    if [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
 # Load possible bash plugins from the ~/.bash_plugins/ dir
-if [ -d ~/.bash_plugins ]
-then
+if [ -d ~/.bash_plugins ]; then
 
     for f in ~/.bash_plugins/*
     do
