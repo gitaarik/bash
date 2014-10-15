@@ -1,15 +1,20 @@
 # Set the correct locale
-LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Add the ~/bin/ dir to $PATH
-PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin
 
 # Make the prompt blue, bold and display the current path
-PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\w \\$ \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\w \\$ \[$(tput sgr0)\]"
 
 # Use a big command history
-HISTSIZE=1000
-HISTFILESIZE=2000
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+
+# Set the default editor to vim
+export EDITOR=vim
+export VISUAL=vim
 
 # Don't put duplicate lines or lines starting with space in the history
 export HISTCONTROL=ignoredups
@@ -43,11 +48,14 @@ alias l='ls -lAFh'
 alias c='cd'
 alias v='vi .'
 alias j='jobs'
+alias t='tmux'
 alias s='screen'
 alias rm='rm -i'
+alias ip='ipython'
 alias gg='git grep -i'
 alias actenv='. ../env/bin/activate'
 alias gitprompt='. ~/bin/git-prompt'
+alias ptp='ptipython --vi'
 
 # Default modifiers for less.
 #
