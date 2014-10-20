@@ -52,7 +52,7 @@ alias rm='rm -i'
 alias ip='ipython'
 alias gg='git grep -i'
 alias actenv='. ../env/bin/activate'
-alias gitprompt='. ~/bin/git-prompt'
+alias gitprompt=". $HOME/bin/git-prompt"
 alias ptp='ptipython --vi'
 
 # Default modifiers for less.
@@ -65,8 +65,12 @@ alias ptp='ptipython --vi'
 # -S crop lines longer than the screen instead of wrapping them
 export LESS=-RiFXS
 
-# Init bash completion
+# Add RVM to PATH
+if [ -d $HOME/.rvm/bin ]; then
+    export PATH="$PATH:$HOME/.rvm/bin"
+fi
 
+# Init bash completion
 if [[ $OSTYPE == darwin* ]]; then
     if type brew > /dev/null 2>&1; then
         if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -80,9 +84,9 @@ else
 fi
 
 # Load possible bash plugins from the ~/.bash_plugins/ dir
-if [ -d ~/.bash_plugins ]; then
+if [ -d $HOME/.bash_plugins ]; then
 
-    for f in ~/.bash_plugins/*
+    for f in $HOME/.bash_plugins/*
     do
         source $f
     done
