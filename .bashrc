@@ -45,6 +45,7 @@ fi
 alias l='ls -lAFh'
 alias c='cd'
 alias v='vi .'
+alias vs='vi -S Session.vim'
 alias j='jobs'
 alias t='tmux'
 alias s='screen'
