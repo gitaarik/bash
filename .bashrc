@@ -54,7 +54,7 @@ alias rm='rm -i'
 alias ip='ipython'
 alias gg='git grep -i'
 alias actenv='. ../env/bin/activate'
-alias nodebin='export PATH=$(npm bin):$PATH'
+alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=$(npm bin):$PATH'
 alias gitprompt=". $HOME/bin/git-prompt"
 alias ptp='ptipython --vi'
 
