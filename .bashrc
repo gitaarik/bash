@@ -44,7 +44,8 @@ fi
 # Global aliases
 alias l='ls -lAFh'
 alias c='cd'
-alias v='vi .'
+alias vi='vim'
+alias v='vim .'
 alias vs='vi -S Session.vim'
 alias j='jobs'
 alias f='fg'
