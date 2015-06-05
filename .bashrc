@@ -61,6 +61,7 @@ alias actenv='. ../env/bin/activate'
 alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=$(npm bin):$PATH'
 alias gitprompt=". $HOME/bin/git-prompt"
 alias ptp='ptipython --vi'
+alias clrswp='find . -name "*.swp" -delete'
 
 # Default modifiers for less.
 #
