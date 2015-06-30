@@ -1,3 +1,8 @@
+# If we're in linux, set a 256-color terminal
+if [[ $OSTYPE == linux* ]]; then
+    export TERM=xterm-256color
+fi
+
 # Set the correct locale
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -39,6 +44,12 @@ fi
 # OS X specific aliases
 if [[ $OSTYPE == darwin* ]]; then
     export CLICOLOR=1
+fi
+
+# Simulate OSX's pbcopy and pbpaste on other platforms
+if [[ ! $OSTYPE == darwin* ]]; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
 fi
 
 # Global aliases
