@@ -31,6 +31,9 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Disable the bell
+set bell-style none
+
 # Linux specific aliases
 if [[ $OSTYPE == linux* ]]; then
     alias ls='ls --color=auto'
