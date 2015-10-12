@@ -1,8 +1,3 @@
-# If we're in linux, set a 256-color terminal
-if [[ $OSTYPE == linux* ]]; then
-    export TERM=xterm-256color
-fi
-
 # Set the correct locale
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -34,30 +29,31 @@ shopt -s checkwinsize
 # Disable the bell
 set bell-style none
 
-# Linux specific aliases
+# Linux specific settings
 if [[ $OSTYPE == linux* ]]; then
+
+    export TERM=xterm-256color
+
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+
+    # Simulate OSX's pbcopy and pbpaste on linux using xsel
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+
 fi
 
-# OS X specific aliases
+# OS X specific settings
 if [[ $OSTYPE == darwin* ]]; then
     export CLICOLOR=1
 fi
 
-# Simulate OSX's pbcopy and pbpaste on other platforms
-if [[ ! $OSTYPE == darwin* ]]; then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
-fi
-
 # Global aliases
 alias l='ls -lAFh'
-alias l1='ls -1'
 alias c='cd'
 alias v='vim .'
 alias vi='vim'
@@ -94,16 +90,10 @@ if [ -d $HOME/.rvm/bin ]; then
 fi
 
 # Init bash completion
-if [[ $OSTYPE == darwin* ]]; then
-    if type brew > /dev/null 2>&1; then
-        if [ -f $(brew --prefix)/etc/bash_completion ]; then
-            . $(brew --prefix)/etc/bash_completion
-        fi
-    fi
-else
-    if [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-    fi
+if [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
+elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
 fi
 
 # Load possible bash plugins from the ~/.bash_plugins/ dir
