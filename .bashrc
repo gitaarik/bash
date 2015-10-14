@@ -68,11 +68,32 @@ alias s='screen'
 alias rm='rm -i'
 alias ip='ipython'
 alias gg='git grep -i'
-alias actenv='. ../env/bin/activate'
 alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=$(npm bin):$PATH'
 alias gitprompt=". $HOME/bin/git-prompt"
 alias ptp='ptipython --vi'
 alias clrswp='find . -name "*.swp" -delete'
+
+actenv() {
+
+    cur_wording_dir=$(pwd)
+    activate_path=env/bin/activate
+
+    while [ ! -f $activate_path ]; do
+
+        if [ "$(pwd)" == '/' ]; then
+            echo No virtualenv found
+            cd $cur_wording_dir
+            return
+        fi
+
+        cd ..
+
+    done
+
+    source $activate_path
+    cd $cur_wording_dir
+
+}
 
 # Default modifiers for less.
 #
