@@ -55,6 +55,7 @@ fi
 # Global aliases
 alias l='ls -lAFh'
 alias c='cd'
+alias c.='cd ..'
 alias v='vim .'
 alias vi='vim'
 alias vip='vim -p'
