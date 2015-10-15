@@ -72,6 +72,7 @@ alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=
 alias gitprompt=". $HOME/bin/git-prompt"
 alias ptp='ptipython --vi'
 alias clrswp='find . -name "*.swp" -delete'
+alias prjson='python -m json.tool'
 
 actenv() {
 
