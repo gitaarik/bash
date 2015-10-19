@@ -67,7 +67,7 @@ alias tmc='tmux loadb -'
 alias tmp='tmux saveb -'
 alias s='screen'
 alias rm='rm -i'
-alias ip='ipython'
+alias ip='ipython --pprint'
 alias gg='git grep -i'
 alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=$(npm bin):$PATH'
 alias gitprompt=". $HOME/bin/git-prompt"
