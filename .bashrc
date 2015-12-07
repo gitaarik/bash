@@ -77,6 +77,7 @@ alias gitprompt=". $HOME/bin/git-prompt"
 alias ptp='ptipython --vi'
 alias clrswp='find . -name "*.swp" -delete'
 alias prjson='python -m json.tool'
+alias d='docker'
 
 actenv() {
 
