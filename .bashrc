@@ -32,6 +32,9 @@ set bell-style none
 # Linux specific settings
 if [[ $OSTYPE == linux* ]]; then
 
+    # Disable the Ctrl+S freeze binding
+    stty -ixon
+
     export TERM=xterm-256color
 
     alias ls='ls --color=auto'
