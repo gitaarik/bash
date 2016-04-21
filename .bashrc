@@ -70,14 +70,14 @@ alias tmc='tmux loadb -'
 alias tmp='tmux saveb -'
 alias s='screen'
 alias rm='rm -i'
-alias ip='ipython --pprint'
 alias gg='git grep -i'
 alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=$(npm bin):$PATH'
-alias gitprompt=". $HOME/bin/git-prompt"
-alias ptp='ptipython --vi'
 alias clrswp='find . -name "*.swp" -delete'
-alias prjson='python -m json.tool'
 alias d='docker'
+alias ptp='ptipython --vi'
+alias ip='ipython --pprint'
+alias ds='./manage.py shell'
+alias prjson='python -m json.tool'
 
 actenv() {
 
