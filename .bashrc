@@ -78,6 +78,7 @@ alias ptp='ptipython --vi'
 alias ip='ipython --pprint'
 alias ds='./manage.py shell'
 alias prjson='python -m json.tool'
+alias gitprompt=". $HOME/bin/git-prompt"
 
 actenv() {
 
