@@ -78,7 +78,8 @@ alias ptp='ptipython --vi'
 alias ip='ipython --pprint'
 alias ds='./manage.py shell'
 alias prjson='python -m json.tool'
-alias gitprompt=". $HOME/bin/git-prompt"
+alias gitprompt=". $HOME/bin/gitprompt"
+alias ro='sudo su -'
 
 actenv() {
 
@@ -101,6 +102,11 @@ actenv() {
     cd $cur_wording_dir
 
 }
+
+addpath() {
+    export PATH=$PATH:$*
+}
+
 
 # Default modifiers for less.
 #
