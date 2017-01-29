@@ -57,6 +57,7 @@ alias ds='./manage.py shell'
 alias prjson='python -m json.tool'
 alias igrep='grep -i'
 alias ro='sudo su -'
+alias tree='tree -F'
 
 # Linux specific settings
 if [[ $OSTYPE == linux* ]]; then
@@ -66,9 +67,11 @@ if [[ $OSTYPE == linux* ]]; then
 
     export TERM=xterm-256color
 
+    # This sets the LS_COLORS env var, this will make commands like `tree`
+    # display colors.
+    eval $(dircolors)
+
     alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
