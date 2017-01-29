@@ -6,7 +6,9 @@ export LC_ALL=en_US.UTF-8
 export PATH=$PATH:$HOME/bin
 
 # Make the prompt blue, bold and display the current path
-export PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\w \\$ \[$(tput sgr0)\]"
+__color_bold_blue='\[$(tput bold)\]\[$(tput setaf 4)\]'
+__color_white='\[$(tput sgr0)\]'
+export PS1="$__color_bold_blue\w \\$ $__color_white"
 
 # Use a big command history
 export HISTSIZE=1000
@@ -29,32 +31,6 @@ shopt -s checkwinsize
 # Disable the bell
 set bell-style none
 
-# Linux specific settings
-if [[ $OSTYPE == linux* ]]; then
-
-    # Disable the Ctrl+S freeze binding
-    stty -ixon
-
-    export TERM=xterm-256color
-
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-
-    # Simulate OSX's pbcopy and pbpaste on linux using xsel
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
-
-fi
-
-# OS X specific settings
-if [[ $OSTYPE == darwin* ]]; then
-    export CLICOLOR=1
-fi
-
 # Global aliases
 alias l='ls -lAFh'
 alias c='cd'
@@ -71,6 +47,7 @@ alias tmp='tmux saveb -'
 alias s='screen'
 alias rm='rm -i'
 alias gg='git grep -i'
+alias ggs='git grep'
 alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=$(npm bin):$PATH'
 alias clrswp='find . -name "*.swp" -delete'
 alias d='docker'
@@ -78,8 +55,35 @@ alias ptp='ptipython --vi'
 alias ip='ipython --pprint'
 alias ds='./manage.py shell'
 alias prjson='python -m json.tool'
-alias gitprompt=". $HOME/bin/gitprompt"
+alias igrep='grep -i'
 alias ro='sudo su -'
+
+# Linux specific settings
+if [[ $OSTYPE == linux* ]]; then
+
+    # Disable the Ctrl+S freeze binding
+    stty -ixon
+
+    export TERM=xterm-256color
+
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias igrep='grep -i --color=auto'
+
+    # Simulate OSX's pbcopy and pbpaste on linux using xsel
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+
+fi
+
+# OS X specific settings
+if [[ $OSTYPE == darwin* ]]; then
+    export CLICOLOR=1
+fi
 
 actenv() {
 
@@ -129,6 +133,31 @@ if [ -f /usr/local/etc/bash_completion ]; then
 elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+# A nice shell prompt for inside git repostories
+# Shows a short status of the repository in the prompt
+gitprompt() {
+
+    export GIT_PS1_SHOWDIRTYSTATE=true;
+	export GIT_PS1_SHOWSTASHSTATE=true;
+	export GIT_PS1_SHOWUNTRACKEDFILES=true;
+	export GIT_PS1_SHOWUPSTREAM="auto";
+	export GIT_PS1_SHOWCOLORHINTS=true;
+	. /usr/lib/git-core/git-sh-prompt;
+
+	local ps1_start="$__color_bold_blue\w "
+	local ps1_end="$__color_bold_blue \\$ $__color_white"
+	local git_string="(%s$__color_bold_blue)"
+
+	export PROMPT_COMMAND="__git_ps1 \"$ps1_start\" \"$ps1_end\" \"$git_string\""
+
+    # Short alias for git stuff
+	alias g=git
+
+	# Make autocomplete also work fo the `g` alias
+	eval $(complete -p git | sed 's/git$/g/g')
+
+}
 
 # Load possible bash plugins from the ~/.bash_plugins/ dir
 if [ -d $HOME/.bash_plugins ]; then

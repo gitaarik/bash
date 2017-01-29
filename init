@@ -1,11 +1,6 @@
 #!/bin/bash
 
-if [[ $OSTYPE == darwin* ]]; then
-    dir=$(dirname $0)
-    path=$PWD${dir:1}
-else
-    path=$(dirname $(readlink -f $0))
-fi
+path="$( cd "$( dirname "${BASH_SOURCE[1]}" )" && pwd )"
 
 ln -sf "$path"/.bashrc ~/.bashrc
 ln -sf "$path"/.bash_aliases ~/.bash_aliases
