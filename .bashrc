@@ -148,9 +148,9 @@ gitprompt() {
 	export GIT_PS1_SHOWCOLORHINTS=true;
 	. /usr/lib/git-core/git-sh-prompt;
 
-	local ps1_start="$__color_bold_blue\w "
+	local ps1_start="$__color_bold_blue\w"
 	local ps1_end="$__color_bold_blue \\$ $__color_white"
-	local git_string="(%s$__color_bold_blue)"
+	local git_string=" (%s$__color_bold_blue)"
 
 	export PROMPT_COMMAND="__git_ps1 \"$ps1_start\" \"$ps1_end\" \"$git_string\""
 
