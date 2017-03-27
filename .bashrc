@@ -51,12 +51,13 @@ alias ggs='git grep'
 alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=$(npm bin):$PATH'
 alias clrswp='find . -name "*.swp" -delete'
 alias d='docker'
+alias dc='docker-compose'
 alias ptp='ptipython --vi'
 alias ip='ipython --pprint'
 alias ds='./manage.py shell'
 alias prjson='python -m json.tool'
 alias igrep='grep -i'
-alias ro='sudo su -'
+alias si='sudo -i'
 alias tree='tree -F'
 
 # Linux specific settings
@@ -142,23 +143,23 @@ fi
 gitprompt() {
 
     export GIT_PS1_SHOWDIRTYSTATE=true;
-	export GIT_PS1_SHOWSTASHSTATE=true;
-	export GIT_PS1_SHOWUNTRACKEDFILES=true;
-	export GIT_PS1_SHOWUPSTREAM="auto";
-	export GIT_PS1_SHOWCOLORHINTS=true;
-	. /usr/lib/git-core/git-sh-prompt;
+    export GIT_PS1_SHOWSTASHSTATE=true;
+    export GIT_PS1_SHOWUNTRACKEDFILES=true;
+    export GIT_PS1_SHOWUPSTREAM="auto";
+    export GIT_PS1_SHOWCOLORHINTS=true;
+    . /usr/lib/git-core/git-sh-prompt;
 
-	local ps1_start="$__color_bold_blue\w"
-	local ps1_end="$__color_bold_blue \\$ $__color_white"
-	local git_string=" (%s$__color_bold_blue)"
+    local ps1_start="$__color_bold_blue\w"
+    local ps1_end="$__color_bold_blue \\$ $__color_white"
+    local git_string=" (%s$__color_bold_blue)"
 
-	export PROMPT_COMMAND="__git_ps1 \"$ps1_start\" \"$ps1_end\" \"$git_string\""
+    export PROMPT_COMMAND="__git_ps1 \"$ps1_start\" \"$ps1_end\" \"$git_string\""
 
     # Short alias for git stuff
-	alias g=git
+    alias g=git
 
-	# Make autocomplete also work fo the `g` alias
-	eval $(complete -p git | sed 's/git$/g/g')
+    # Make autocomplete also work fo the `g` alias
+    eval $(complete -p git | sed 's/git$/g/g')
 
 }
 
