@@ -21,6 +21,9 @@ export VISUAL=vim
 # Don't put duplicate lines or lines starting with space in the history
 export HISTCONTROL=ignoredups
 
+# Enable globstar behavior, makes **/* match subdirs
+shopt -s globstar
+
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -32,7 +35,7 @@ shopt -s checkwinsize
 set bell-style none
 
 # Global aliases
-alias l='ls -lAFh'
+alias l='/opt/exa -lF'
 alias c='cd'
 alias c.='cd ..'
 alias v='vim .'
@@ -140,6 +143,7 @@ fi
 
 # A nice shell prompt for inside git repostories
 # Shows a short status of the repository in the prompt
+# Adds an alias `g=git` and makes autocomplete work
 gitprompt() {
 
     export GIT_PS1_SHOWDIRTYSTATE=true;
@@ -159,7 +163,12 @@ gitprompt() {
     alias g=git
 
     # Make autocomplete also work fo the `g` alias
-    eval $(complete -p git | sed 's/git$/g/g')
+    # Old way:
+    #   eval $(complete -p git | sed 's/git$/g/g')
+    # Old way doesn't seem to work anymore, new way:
+    __git_complete g __git_main
+    # More info:
+    # https://stackoverflow.com/questions/342969/how-do-i-get-bash-completion-to-work-with-aliases
 
 }
 
@@ -172,3 +181,5 @@ if [ -d $HOME/.bash_plugins ]; then
     done
 
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
