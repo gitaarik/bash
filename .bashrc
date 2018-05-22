@@ -55,19 +55,31 @@ alias nodebin='echo -e "Setting up nodebin with path:\n$(npm bin)"; export PATH=
 alias clrswp='find . -name "*.swp" -delete'
 alias d='docker'
 alias dc='docker-compose'
-alias ptp='ptipython --vi'
-alias ip='ipython --pprint'
-alias ds='./manage.py shell'
 alias prjson='python -m json.tool'
 alias igrep='grep -i'
 alias si='sudo -i'
 alias tree='tree -F'
+alias ptp='ptipython --vi'
+alias ip='ipython --pprint'
+alias psh='pipenv shell'
+
+# Handy Django aliases
+alias ds='./manage.py shell'
+alias msh='./manage.py shell'
+alias mrs='./manage.py runserver'
+
+# Django test command where you can give the path to the test file. It will
+# convert it to the dotted format.
+mtf() {
+    ./manage.py test $(echo "$*" | sed 's/\//./g' | sed 's/\.py//g')
+}
 
 # Linux specific settings
 if [[ $OSTYPE == linux* ]]; then
 
     # Disable the Ctrl+S freeze binding
-    stty -ixon
+    stty stop ''
+    stty start ''
 
     export TERM=xterm-256color
 
@@ -97,11 +109,11 @@ actenv() {
     cur_wording_dir=$(pwd)
     activate_path=env/bin/activate
 
-    while [ ! -f $activate_path ]; do
+    while [ ! -f "$activate_path" ]; do
 
         if [ "$(pwd)" == '/' ]; then
             echo No virtualenv found
-            cd $cur_wording_dir
+            cd "$cur_wording_dir"
             return
         fi
 
@@ -109,8 +121,8 @@ actenv() {
 
     done
 
-    source $activate_path
-    cd $cur_wording_dir
+    source "$activate_path"
+    cd "$cur_wording_dir"
 
 }
 
