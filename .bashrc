@@ -77,10 +77,6 @@ mtf() {
 # Linux specific settings
 if [[ $OSTYPE == linux* ]]; then
 
-    # Disable the Ctrl+S freeze binding
-    stty stop ''
-    stty start ''
-
     export TERM=xterm-256color
 
     # This sets the LS_COLORS env var, this will make commands like `tree`
