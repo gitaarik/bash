@@ -71,7 +71,7 @@ alias mrs='./manage.py runserver'
 # Django test command where you can give the path to the test file. It will
 # convert it to the dotted format.
 mtf() {
-    ./manage.py test $(echo "$*" | sed 's/\//./g' | sed 's/\.py//g')
+    ./manage.py test $(echo "$*" | sed 's/\//./g' | sed 's/\.py//g' | sed 's/.$//')
 }
 
 # Linux specific settings
